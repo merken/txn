@@ -14,7 +14,7 @@ namespace txn {
         public override async Task OnActionExecutionAsync (ActionExecutingContext executingContext, ActionExecutionDelegate next) {
             var connection = transaction.Connection;
             if (connection.State != ConnectionState.Open)
-                throw new NotSupportedException("The provided connection was not open!");
+                throw new NotSupportedException ("The provided connection was not open!");
 
             var executedContext = await next.Invoke ();
             if (executedContext.Exception == null) {

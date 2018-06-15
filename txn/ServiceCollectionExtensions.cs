@@ -15,9 +15,8 @@ namespace txn {
             foreach (var type in typesFromAssemblies)
                 serviceCollection.Add (new ServiceDescriptor (type, type, lifetime));
         }
-        public static void UseSqlServer (this IServiceCollection serviceCollection, IConfiguration configuration) {
+        public static void UseSqlServer (this IServiceCollection serviceCollection, string connectionString) {
             serviceCollection.AddScoped<IDbConnection> ((serviceProvider) => {
-                var connectionString = configuration.GetConnectionString ("myDb");
                 return new SqlConnection (connectionString);
             });
         }

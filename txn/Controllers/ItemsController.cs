@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -32,6 +32,11 @@ namespace txn.Controllers {
             return repository.AddOrUpdate (item);
         }
 
+        [HttpPost ("search")]
+        public Task<IEnumerable<MyItem>> Search (string query) {
+            return repository.Search (query);
+        }
+
         [HttpPut ("{id}")]
         public Task<MyItem> Put (Guid id, [FromBody] MyItem item) {
             if (id != item.Id)
@@ -40,7 +45,7 @@ namespace txn.Controllers {
         }
 
         [HttpDelete ("{id}")]
-        public Task Delete (Guid id) { 
+        public Task Delete (Guid id) {
             return repository.Delete (id);
         }
     }
