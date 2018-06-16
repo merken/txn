@@ -34,7 +34,7 @@ namespace txn {
 
             serviceCollection
                 .AddMvc (setup => {
-                    setup.Filters.AddService<UnitOfWorkFilter> ();
+                    setup.Filters.AddService<UnitOfWorkFilter> (1);
                 });
         }
     }
