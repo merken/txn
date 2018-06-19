@@ -8,24 +8,29 @@ using Microsoft.AspNetCore.Mvc;
 using txn.Business;
 using txn.Models;
 
-namespace txn.Controllers {
-    [Route ("api/[controller]")]
+namespace txn.Controllers
+{
+    [Route("api/[controller]")]
     [ApiController]
-    public class BusinessLogicController : ControllerBase {
+    public class BusinessLogicController : ControllerBase
+    {
         private readonly BusinessLogic logic;
 
-        public BusinessLogicController (BusinessLogic logic) {
+        public BusinessLogicController(BusinessLogic logic)
+        {
             this.logic = logic;
         }
 
-        [HttpPost ("bulk-create")]
-        public Task<IEnumerable<MyItem>> Post () {
-            return logic.BulkCreate ();
+        [HttpPost("bulk-create")]
+        public Task<IEnumerable<MyItem>> Post()
+        {
+            return logic.BulkCreate();
         }
 
-        [HttpDelete ("bulk-delete")]
-        public Task Delete () {
-            return logic.BulkDelete ();
+        [HttpDelete("bulk-delete")]
+        public Task Delete()
+        {
+            return logic.BulkDelete();
         }
     }
 }
